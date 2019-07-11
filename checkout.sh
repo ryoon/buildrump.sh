@@ -62,8 +62,8 @@ NBSRC_EXTRA_posix=''
 
 NBSRC_EXTRA_usr=''
 
-GITREPO='https://github.com/rumpkernel/src-netbsd'
-GITREPOPUSH='git@github.com:rumpkernel/src-netbsd'
+GITREPO='https://github.com/ryoon/netbsd-src'
+GITREPOPUSH='git@github.com:ryoon/netbsd-src'
 GITREVFILE='.srcgitrev'
 
 checkoutcvs ()
@@ -190,7 +190,7 @@ checkoutgit ()
 		    || die "Cloned repo in ${SRCDIR} is not clean, aborting."
 		${GIT} fetch origin buildrump-src || die Failed to fetch repo
 	else
-		${GIT} clone -n ${GITREPO} ${SRCDIR} || die Clone failed
+		${GIT} clone --depth 1 -n ${GITREPO} ${SRCDIR} || die Clone failed
 		cd ${SRCDIR}
 	fi
 
